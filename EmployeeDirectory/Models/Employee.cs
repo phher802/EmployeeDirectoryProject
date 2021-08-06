@@ -1,11 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EmployeeDirectory.Models
 {
     public class Employee
-    {
+    { 
+        [Key]
+        public int Id { get; set; }
+
+        [Display (Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Full Name")]
+        public string FullName { get; set; }
+
+
+        public string Country { get; set; }
+
+        [Display(Name = "D.O.B")]
+        public string DateOfBirth { get; set; }
+
+        public int Age { get; set; }
     }
+
+
 }
