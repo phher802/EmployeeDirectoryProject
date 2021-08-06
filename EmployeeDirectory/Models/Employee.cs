@@ -23,7 +23,7 @@ namespace EmployeeDirectory.Models
 
         public string Country { get; set; }
 
-        [Display(Name = "D.O.B")]
+        [Display(Name = "Date of Birth")]
         public string DateOfBirth { get; set; }
 
         public int Age { get; set; }
