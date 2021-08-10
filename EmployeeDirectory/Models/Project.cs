@@ -16,8 +16,12 @@ namespace EmployeeDirectory.Models
 
         public string Description { get; set; }
 
+        //used to display just the date adn not the time
+        [DataType(DataType.Date)]
+        public DateTime Deadline { get; set; }
 
-        public string Deadline { get; set; }
+        public List<Project> GetProjects { get; set; }
+
 
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }

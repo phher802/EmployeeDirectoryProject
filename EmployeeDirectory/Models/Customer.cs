@@ -18,6 +18,10 @@ namespace EmployeeDirectory.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
 
+        public List<Customer> GetCustomers { get; set; }
 
+        public List<Project> GetCustomerProjects { get; set; }
+
+     
     }
 }

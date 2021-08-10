@@ -28,6 +28,10 @@ namespace EmployeeDirectory.Models
 
         public int Age { get; set; }
 
+        public List<Employee> GetEmployees { get; set; }
+
+        public List<Project> GetEmployeeProjects { get; set; }
+
         public string GetFullName()
         {
             if (string.IsNullOrEmpty(LastName))
