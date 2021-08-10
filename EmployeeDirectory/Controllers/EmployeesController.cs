@@ -58,8 +58,7 @@ namespace EmployeeDirectory.Controllers
 
                 _context.Employees.Add(newEmployee);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-
+          
             }
             try
             {
