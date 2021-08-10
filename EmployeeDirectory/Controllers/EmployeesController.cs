@@ -71,24 +71,42 @@ namespace EmployeeDirectory.Controllers
         }
 
         // GET: EmployeesController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditEmployee(int id)
         {
-            return View();
+
+            var employee = _context.Employees.Find(id);
+            return View(employee);
         }
 
         // POST: EmployeesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult EditEmployee(int? id, Employee employee)
         {
-            try
+            //if(id == null)
+            //{
+            //    return NotFound();
+            //}
+
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Employees.Update(employee);
+                    _context.SaveChanges();
+                    
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
+
+                return View("Index");
+
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
+
         }
 
         // GET: EmployeesController/Delete/5
