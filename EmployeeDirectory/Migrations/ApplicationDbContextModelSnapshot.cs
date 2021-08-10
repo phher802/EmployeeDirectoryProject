@@ -31,12 +31,7 @@ namespace EmployeeDirectory.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProjectId");
 
                     b.ToTable("Customers");
                 });
@@ -78,8 +73,8 @@ namespace EmployeeDirectory.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CustomerContact")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Deadline")
                         .HasColumnType("nvarchar(max)");
@@ -95,29 +90,28 @@ namespace EmployeeDirectory.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CustomerId");
+
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("EmployeeDirectory.Models.Customer", b =>
+            modelBuilder.Entity("EmployeeDirectory.Models.Project", b =>
                 {
-                    b.HasOne("EmployeeDirectory.Models.Project", "Project")
+                    b.HasOne("EmployeeDirectory.Models.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("EmployeeDirectory.Models.Project", b =>
-                {
                     b.HasOne("EmployeeDirectory.Models.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Employee");
                 });

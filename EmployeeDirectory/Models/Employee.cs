@@ -27,7 +27,16 @@ namespace EmployeeDirectory.Models
         public string DateOfBirth { get; set; }
 
         public int Age { get; set; }
+
+        public string GetFullName()
+        {
+            if (string.IsNullOrEmpty(LastName))
+                throw new MissingFieldException("Last name is empty");
+
+            return string.Format("{0} {1}", FirstName, LastName);
+        }
     }
+
 
 
 }

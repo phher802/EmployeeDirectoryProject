@@ -16,7 +16,6 @@ namespace EmployeeDirectory.Models
 
         public string Description { get; set; }
 
-        public string CustomerContact { get; set; }
 
         public string Deadline { get; set; }
 
@@ -24,7 +23,9 @@ namespace EmployeeDirectory.Models
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
-
+        [ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
     }
 
 
